@@ -4,14 +4,14 @@ include('function.php');
 if(isset($_GET['id']) && isset($_GET['slug'])){
 	$contentId = $_GET['id'];
 
-$contentSlug = $_GET['slug'];
+	$contentSlug = $_GET['slug'];
 
-if(isset($_GET['featuredImage'])){
-	$isImage = true;
-	$contentImage = $_GET['featuredImage'];
-}
+	if(isset($_GET['featuredImage'])){
+		$isImage = true;
+		$contentImage = $_GET['featuredImage'];
+	}
 
-$dom =  getOneArticle($contentId, $contentSlug);
+	$dom =  getOneArticle($contentId, $contentSlug);
 
 }
 ?>
@@ -29,19 +29,20 @@ $dom =  getOneArticle($contentId, $contentSlug);
 		    $scrape = $dom->getElementsByTagName('h1');
 
 	        foreach($scrape as $title){
-	        echo "Title:\n".$title->nodeValue;
+	        	echo "Title:\n".$title->nodeValue;
             }?>
         </h1>
 
 		<p><?php 
 			$scrape2 = $dom->getElementsByTagName('p');
 	    	foreach($scrape2 as $p){
-	    	echo $p->nodeValue;
+	    		echo $p->nodeValue;
 	    	}?>
 		 </p>
 	</div>
-	<div>
+	<div><?php if($isImage){?>
 		<img  style="padding: 30px;" src="https://bg.annapurnapost.com<?php echo $contentImage?>" alt="" class="img-responsive" width="450">
+	    <?php }?>
 	</div>
 </body>
 </html>

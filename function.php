@@ -11,7 +11,6 @@ function getArticleList($category, $number){
 function getOneArticle($id, $slug){
 	$file = file_get_contents("https://annapurnapost.com/news/{$slug}-{$id}");
 
-
 	$dom = new domDocument;
 	@$dom->loadHTML($file);
 
